@@ -68,7 +68,7 @@ export default function Services() {
               key={service.number}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className="flex items-center gap-6 lg:gap-12 py-6 border-b border-gray-100 cursor-pointer group"
+              className="flex items-center gap-6 lg:gap-12 py-6 border-b border-gray-100 group"
             >
               <span className="text-[#1A1A1A]/20 font-bold text-xs uppercase tracking-widest w-8 shrink-0 group-hover:text-[#C17B54] transition-colors">
                 {service.number}
@@ -94,13 +94,6 @@ export default function Services() {
                 {service.price}
               </span>
 
-              <span
-                className={`text-[#C17B54] text-lg shrink-0 transition-transform duration-150 ${
-                  hovered === i ? 'translate-x-1.5' : ''
-                }`}
-              >
-                →
-              </span>
             </div>
           ))}
         </div>

@@ -24,7 +24,7 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-white py-24 border-t border-gray-100">
+    <section id="reviews" className="bg-[#FAFAF8] py-24 border-t border-gray-100">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
 
@@ -38,9 +38,9 @@ export default function Reviews() {
           <p className="text-[#6B6B6B] text-sm">98% клиентов рекомендуют нас знакомым</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-gray-100">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-gray-200">
           {reviews.map((review) => (
-            <div key={review.name} className="bg-white p-8 lg:p-10">
+            <div key={review.name} className="bg-[#FAFAF8] p-8 lg:p-10">
               <div
                 className="font-black text-[#C17B54]/20 leading-none mb-6"
                 style={{ fontSize: '4rem' }}

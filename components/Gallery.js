@@ -5,49 +5,61 @@ import { useState } from 'react'
 const projects = [
   {
     number: '01',
-    title: 'Двушка в новостройке',
-    type: 'Под ключ',
+    objectType: 'Двухкомнатная квартира',
     area: '58 м²',
+    duration: '68 дней',
+    format: 'Ремонт под ключ',
+    result: 'Сдали на 8 дней раньше срока',
     from: '#1A3C2E',
     to: '#0E2218',
   },
   {
     number: '02',
-    title: 'Кухня-гостиная',
-    type: 'Косметический',
+    objectType: 'Кухня-гостиная',
     area: '38 м²',
+    duration: '21 день',
+    format: 'Косметический ремонт',
+    result: 'Полное обновление за 3 недели',
     from: '#1E2A38',
     to: '#111C28',
   },
   {
     number: '03',
-    title: 'Ванная комната',
-    type: 'Ванная',
+    objectType: 'Ванная комната',
     area: '7 м²',
+    duration: '17 дней',
+    format: 'Ремонт санузла',
+    result: 'Уложились в бюджет и сроки',
     from: '#2A2020',
     to: '#1A1010',
   },
   {
     number: '04',
-    title: 'Трёшка, вторичка',
-    type: 'Капитальный',
+    objectType: 'Трёхкомнатная квартира',
     area: '74 м²',
+    duration: '92 дня',
+    format: 'Капитальный ремонт',
+    result: 'Полная переработка вторички',
     from: '#1A2030',
     to: '#0E141E',
   },
   {
     number: '05',
-    title: 'Студия',
-    type: 'Под ключ',
+    objectType: 'Студия',
     area: '32 м²',
+    duration: '45 дней',
+    format: 'Ремонт под ключ',
+    result: 'Перепланировка и чистовая отделка',
     from: '#28221A',
     to: '#181410',
   },
   {
     number: '06',
-    title: 'Спальня с гардеробной',
-    type: 'Дизайн-проект',
+    objectType: 'Спальня с гардеробной',
     area: '19 м²',
+    duration: '28 дней',
+    format: 'Дизайн-проект + ремонт',
+    result: 'Авторский интерьер под ключ',
     from: '#1E2828',
     to: '#101818',
   },
@@ -83,31 +95,31 @@ export default function Gallery() {
               key={i}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className={`relative overflow-hidden cursor-pointer ${
-                i === 0 ? 'lg:row-span-2' : ''
-              }`}
+              className={`relative overflow-hidden ${i === 0 ? 'lg:row-span-2' : ''}`}
               style={{
                 aspectRatio: i === 0 ? 'auto' : '4/3',
                 minHeight: i === 0 ? '420px' : 'auto',
                 background: `linear-gradient(135deg, ${project.from}, ${project.to})`,
               }}
             >
-              {/* Large number — background element */}
+              {/* Large faded number */}
               <div
-                className="absolute inset-0 flex items-center justify-center select-none pointer-events-none transition-all duration-500"
-                style={{
-                  opacity: hovered === i ? 0.06 : 0.12,
-                }}
+                className="absolute inset-0 flex items-center justify-center select-none pointer-events-none transition-opacity duration-500"
+                style={{ opacity: hovered === i ? 0.04 : 0.1 }}
               >
                 <span
                   className="font-black text-white leading-none"
-                  style={{ fontSize: i === 0 ? 'clamp(12rem, 25vw, 22rem)' : 'clamp(7rem, 14vw, 12rem)' }}
+                  style={{
+                    fontSize: i === 0
+                      ? 'clamp(12rem, 25vw, 22rem)'
+                      : 'clamp(7rem, 14vw, 12rem)',
+                  }}
                 >
                   {project.number}
                 </span>
               </div>
 
-              {/* Top-left number badge */}
+              {/* Top-left badge */}
               <div className="absolute top-5 left-5">
                 <span
                   className="font-black text-xs uppercase tracking-widest transition-colors duration-300"
@@ -117,38 +129,48 @@ export default function Gallery() {
                 </span>
               </div>
 
-              {/* Hover: terracotta accent line slides in from left */}
+              {/* Terracotta left accent line */}
               <div
                 className="absolute top-0 left-0 w-[3px] transition-all duration-300"
-                style={{
-                  height: hovered === i ? '100%' : '0%',
-                  background: '#C17B54',
-                }}
+                style={{ height: hovered === i ? '100%' : '0%', background: '#C17B54' }}
               />
 
-              {/* Bottom info */}
+              {/* Bottom gradient + info */}
               <div
-                className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-300"
+                className="absolute bottom-0 left-0 right-0"
                 style={{
-                  transform: hovered === i ? 'translateY(0)' : 'translateY(6px)',
-                  opacity: hovered === i ? 1 : 0.5,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)',
+                  padding: '3rem 1.25rem 1.25rem',
                 }}
               >
+                {/* Row 1: format · duration */}
                 <div className="flex items-center gap-2 mb-2">
                   <div
-                    className="h-px transition-all duration-300"
-                    style={{
-                      width: hovered === i ? '16px' : '8px',
-                      background: '#C17B54',
-                    }}
+                    className="h-px transition-all duration-300 shrink-0"
+                    style={{ width: hovered === i ? '16px' : '8px', background: '#C17B54' }}
                   />
-                  <span className="text-[#C17B54] text-xs uppercase tracking-wider font-semibold">
-                    {project.type} · {project.area}
+                  <span className="text-[#C17B54] text-xs uppercase tracking-wider font-semibold truncate">
+                    {project.format} · {project.duration}
                   </span>
                 </div>
-                <h3 className="text-white font-black text-sm lg:text-base uppercase leading-tight">
-                  {project.title}
+
+                {/* Row 2: objectType · area */}
+                <h3 className="text-white font-black text-sm lg:text-base uppercase leading-tight mb-1.5">
+                  {project.objectType} · {project.area}
                 </h3>
+
+                {/* Row 3: result — slides in on hover */}
+                <div
+                  className="overflow-hidden transition-all duration-300"
+                  style={{
+                    maxHeight: hovered === i ? '28px' : '0px',
+                    opacity: hovered === i ? 1 : 0,
+                  }}
+                >
+                  <p className="text-white/55 text-xs">
+                    {project.result}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
