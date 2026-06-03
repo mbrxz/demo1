@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-sm' : 'bg-transparent'
+        scrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-100' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-6 lg:px-16">
@@ -53,7 +53,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3">
             <a
               href="tel:+74950000000"
               className={`hidden lg:block text-sm font-bold transition-colors duration-300 ${

@@ -38,34 +38,37 @@ export default function Reviews() {
           <p className="text-[#6B6B6B] text-sm">98% клиентов рекомендуют нас знакомым</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-gray-200">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {reviews.map((review) => (
-            <div key={review.name} className="bg-[#FAFAF8] p-8 lg:p-10">
+            <div
+              key={review.name}
+              className="bg-white border border-[#E8E2DA] p-9 lg:p-10 hover:border-[#C17B54]/40 transition-colors duration-300"
+            >
               <div
-                className="font-black text-[#C17B54]/20 leading-none mb-6"
-                style={{ fontSize: '4rem' }}
+                className="font-black text-[#C17B54]/30 leading-none mb-6"
+                style={{ fontSize: '3.5rem' }}
               >
                 &ldquo;
               </div>
 
-              <p className="text-[#1A1A1A] text-base leading-relaxed mb-8">
+              <p className="text-[#1A1A1A] text-[0.975rem] leading-relaxed mb-8">
                 {review.text}
               </p>
 
-              <div className="flex gap-0.5 mb-6">
+              <div className="flex gap-0.5 mb-7">
                 {Array.from({ length: review.rating }).map((_, i) => (
-                  <span key={i} className="text-[#C17B54] text-sm">★</span>
+                  <span key={i} className="text-[#C17B54] text-base">★</span>
                 ))}
               </div>
 
-              <div className="border-t border-gray-100 pt-5 flex items-end justify-between gap-4">
+              <div className="border-t border-[#E8E2DA] pt-5 flex items-end justify-between gap-4">
                 <div>
                   <div className="font-black text-[#1A1A1A] text-sm uppercase tracking-wide">
                     {review.name}
                   </div>
                   <div className="text-[#6B6B6B] text-xs mt-1">{review.type}</div>
                 </div>
-                <div className="text-gray-300 text-xs shrink-0">{review.date}</div>
+                <div className="text-[#C4BDB5] text-xs shrink-0">{review.date}</div>
               </div>
             </div>
           ))}

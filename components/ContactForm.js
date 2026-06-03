@@ -18,6 +18,9 @@ const highlights = [
   { label: 'Смета в день замера' },
 ]
 
+const inputClass =
+  'w-full bg-white/5 border border-white/12 text-white placeholder-white/20 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54] transition-colors duration-200'
+
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: '',
@@ -34,7 +37,6 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // TODO: подключить отправку в Telegram Bot API
     setSubmitted(true)
   }
 
@@ -67,7 +69,7 @@ export default function ContactForm() {
               <div className="text-white/25 text-xs uppercase tracking-widest mb-2">Телефон</div>
               <a
                 href="tel:+74950000000"
-                className="font-black text-white text-xl hover:text-[#C17B54] transition-colors"
+                className="font-black text-white text-xl hover:text-[#C17B54] transition-colors duration-200"
               >
                 +7 (495) 000-00-00
               </a>
@@ -78,17 +80,19 @@ export default function ContactForm() {
             {submitted ? (
               <div className="border border-white/10 p-10 lg:p-12 text-center">
                 <div
-                  className="font-black text-[#C17B54] mb-4 leading-none"
+                  className="font-black text-[#C17B54] mb-5 leading-none"
                   style={{ fontSize: '3rem' }}
                 >
                   ✓
                 </div>
                 <h3 className="font-black text-white text-xl uppercase mb-3">Заявка отправлена</h3>
-                <p className="text-white/40 text-sm">Свяжемся с вами в течение 15 минут</p>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Спасибо! Мы свяжемся с вами<br />в течение 15 минут.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-white/35 text-xs uppercase tracking-wide block mb-2">
                       Имя *
@@ -100,7 +104,7 @@ export default function ContactForm() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Ваше имя"
-                      className="w-full bg-white/5 border border-white/12 text-white placeholder-white/20 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54]/50 transition-colors"
+                      className={inputClass}
                     />
                   </div>
                   <div>
@@ -114,12 +118,12 @@ export default function ContactForm() {
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="+7 (___) ___-__-__"
-                      className="w-full bg-white/5 border border-white/12 text-white placeholder-white/20 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54]/50 transition-colors"
+                      className={inputClass}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-white/35 text-xs uppercase tracking-wide block mb-2">
                       Площадь, м²
@@ -131,7 +135,7 @@ export default function ContactForm() {
                       value={form.area}
                       onChange={handleChange}
                       placeholder="Например: 54"
-                      className="w-full bg-white/5 border border-white/12 text-white placeholder-white/20 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54]/50 transition-colors"
+                      className={inputClass}
                     />
                   </div>
                   <div>
@@ -142,7 +146,7 @@ export default function ContactForm() {
                       name="type"
                       value={form.type}
                       onChange={handleChange}
-                      className="w-full bg-[#1A3C2E] border border-white/12 text-white/60 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54]/50 transition-colors appearance-none cursor-pointer"
+                      className="w-full bg-[#1A3C2E] border border-white/12 text-white/60 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54] transition-colors duration-200 appearance-none cursor-pointer"
                     >
                       <option value="">Выберите тип</option>
                       {RENOVATION_OPTIONS.map((opt) => (
@@ -164,13 +168,13 @@ export default function ContactForm() {
                     onChange={handleChange}
                     placeholder="Расскажите подробнее о задаче..."
                     rows={4}
-                    className="w-full bg-white/5 border border-white/12 text-white placeholder-white/20 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54]/50 transition-colors resize-none"
+                    className={`${inputClass} resize-none`}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#C17B54] text-white font-bold uppercase tracking-widest text-xs py-4 hover:bg-[#a8673f] transition-colors mt-2"
+                  className="w-full bg-[#C17B54] text-white font-black uppercase tracking-widest text-xs py-5 hover:bg-[#a8673f] hover:-translate-y-0.5 transition-all duration-200 mt-2"
                 >
                   Отправить заявку →
                 </button>

@@ -58,7 +58,7 @@ export default function Process() {
                 className="font-black leading-none mb-5 transition-colors duration-300 group-hover:text-[#C17B54]"
                 style={{
                   fontSize: 'clamp(4rem, 6vw, 5.5rem)',
-                  color: 'rgba(255,255,255,0.1)',
+                  color: 'rgba(255,255,255,0.25)',
                 }}
               >
                 {step.number}
