@@ -45,7 +45,7 @@ export default function Services() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <section id="services" className="bg-white py-24 border-t border-gray-100">
+    <section id="services" className="bg-white py-20 border-t border-gray-100">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="flex items-end justify-between pb-10 border-b border-gray-100">
           <div>

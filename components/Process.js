@@ -28,42 +28,45 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-[#F5F1EB] py-24 border-t border-[#E8E3DA]">
+    <section id="process" className="bg-[#1A3C2E] py-24">
       <div className="container mx-auto px-6 lg:px-16">
-        <div className="w-16 h-0.5 bg-[#1A3C2E] mb-12" />
+        <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
 
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
           <h2
-            className="font-black text-[#1A1A1A] uppercase leading-tight"
+            className="font-black text-white uppercase leading-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
           >
             Как мы<br />работаем
           </h2>
-          <p className="text-[#6B6B6B] text-sm max-w-xs leading-relaxed lg:text-right">
+          <p className="text-white/45 text-sm max-w-xs leading-relaxed lg:text-right">
             От первого звонка до ключей — чёткий процесс без неожиданностей
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 border-t border-gray-200">
+        <div className="grid grid-cols-1 lg:grid-cols-5 border-t border-white/10">
           {steps.map((step, i) => (
             <div
               key={step.number}
               className={`pt-8 pb-8 pr-6 group ${
                 i < steps.length - 1
-                  ? 'border-b lg:border-b-0 lg:border-r border-gray-200'
+                  ? 'border-b lg:border-b-0 lg:border-r border-white/10'
                   : ''
               }`}
             >
               <div
-                className="font-black text-[#1A1A1A]/6 leading-none mb-5 group-hover:text-[#C17B54]/12 transition-colors duration-200"
-                style={{ fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
+                className="font-black leading-none mb-5 transition-colors duration-300 group-hover:text-[#C17B54]"
+                style={{
+                  fontSize: 'clamp(4rem, 6vw, 5.5rem)',
+                  color: 'rgba(255,255,255,0.1)',
+                }}
               >
                 {step.number}
               </div>
-              <h3 className="font-black text-[#1A1A1A] text-sm uppercase mb-3 tracking-wide">
+              <h3 className="font-black text-white text-sm uppercase mb-3 tracking-wide">
                 {step.title}
               </h3>
-              <p className="text-[#6B6B6B] text-sm leading-relaxed">{step.desc}</p>
+              <p className="text-white/45 text-sm leading-relaxed">{step.desc}</p>
             </div>
           ))}
         </div>

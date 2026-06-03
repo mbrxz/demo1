@@ -33,11 +33,11 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="bg-[#FAFAF8] py-24">
+    <section className="bg-[#FAFAF8] py-20">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
           <h2
             className="font-black text-[#1A1A1A] uppercase leading-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
