@@ -18,26 +18,43 @@ const highlights = [
   { label: 'Смета в день замера' },
 ]
 
+const EMPTY_FORM = { name: '', phone: '', area: '', type: '', comment: '' }
+
 const inputClass =
   'w-full bg-white/5 border border-white/12 text-white placeholder-white/20 px-4 py-3.5 text-sm focus:outline-none focus:border-[#C17B54] transition-colors duration-200'
 
 export default function ContactForm() {
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    area: '',
-    type: '',
-    comment: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+  const [form, setForm] = useState(EMPTY_FORM)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setStatus('loading')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          area: form.area,
+          repairType: form.type,
+          comment: form.comment,
+        }),
+      })
+
+      if (!res.ok) throw new Error('bad response')
+
+      setStatus('success')
+      setForm(EMPTY_FORM)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -77,12 +94,9 @@ export default function ContactForm() {
           </div>
 
           <div>
-            {submitted ? (
+            {status === 'success' ? (
               <div className="border border-white/10 p-10 lg:p-12 text-center">
-                <div
-                  className="font-black text-[#C17B54] mb-5 leading-none"
-                  style={{ fontSize: '3rem' }}
-                >
+                <div className="font-black text-[#C17B54] mb-5 leading-none" style={{ fontSize: '3rem' }}>
                   ✓
                 </div>
                 <h3 className="font-black text-white text-xl uppercase mb-3">Заявка отправлена</h3>
@@ -172,11 +186,18 @@ export default function ContactForm() {
                   />
                 </div>
 
+                {status === 'error' && (
+                  <p className="text-[#C17B54] text-xs leading-relaxed">
+                    Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-[#C17B54] text-white font-black uppercase tracking-widest text-xs py-5 hover:bg-[#a8673f] hover:-translate-y-0.5 transition-all duration-200 mt-2"
+                  disabled={status === 'loading'}
+                  className="w-full bg-[#C17B54] text-white font-black uppercase tracking-widest text-xs py-5 hover:bg-[#a8673f] hover:-translate-y-0.5 transition-all duration-200 mt-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
                 >
-                  Отправить заявку →
+                  {status === 'loading' ? 'ОТПРАВЛЯЕМ...' : 'Отправить заявку →'}
                 </button>
 
                 <p className="text-white/20 text-xs text-center">
