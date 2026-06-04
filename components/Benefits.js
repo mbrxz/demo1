@@ -33,11 +33,11 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="bg-[#FAFAF8] py-20">
+    <section className="bg-[#FAFAF8] py-14 lg:py-20">
       <div className="container mx-auto px-6 lg:px-16">
-        <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
+        <div className="w-16 h-0.5 bg-[#C17B54] mb-8 lg:mb-12" />
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 lg:mb-12 gap-4 lg:gap-6">
           <h2
             className="font-black text-[#1A1A1A] uppercase leading-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
@@ -53,9 +53,9 @@ export default function Benefits() {
           {benefits.map((item) => (
             <div
               key={item.number}
-              className="bg-[#FAFAF8] p-8 lg:p-10 group hover:bg-white transition-colors duration-200"
+              className="bg-[#FAFAF8] p-6 lg:p-10 group hover:bg-white transition-colors duration-200"
             >
-              <div className="font-black text-[#1A1A1A]/8 text-5xl mb-6 leading-none group-hover:text-[#C17B54]/15 transition-colors duration-200">
+              <div className="font-black text-[#1A1A1A]/8 text-4xl lg:text-5xl mb-4 lg:mb-6 leading-none group-hover:text-[#C17B54]/15 transition-colors duration-200">
                 {item.number}
               </div>
               <h3 className="font-black text-[#1A1A1A] text-sm uppercase mb-3 tracking-wide group-hover:text-[#C17B54] transition-colors duration-200">

@@ -28,11 +28,11 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-[#1A3C2E] py-24">
+    <section id="process" className="bg-[#1A3C2E] py-16 lg:py-24">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 lg:mb-16 gap-4 lg:gap-6">
           <h2
             className="font-black text-white uppercase leading-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
@@ -48,7 +48,7 @@ export default function Process() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`pt-8 pb-8 pr-6 group ${
+              className={`pt-6 pb-6 pr-4 lg:pt-8 lg:pb-8 lg:pr-6 group ${
                 i < steps.length - 1
                   ? 'border-b lg:border-b-0 lg:border-r border-white/10'
                   : ''
@@ -57,7 +57,7 @@ export default function Process() {
               <div
                 className="font-black leading-none mb-5 transition-colors duration-300 group-hover:text-[#C17B54]"
                 style={{
-                  fontSize: 'clamp(4rem, 6vw, 5.5rem)',
+                  fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
                   color: 'rgba(255,255,255,0.25)',
                 }}
               >

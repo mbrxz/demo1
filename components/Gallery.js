@@ -69,7 +69,7 @@ export default function Gallery() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <section id="gallery" className="bg-[#111] py-24">
+    <section id="gallery" className="bg-[#111] py-16 lg:py-24">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="flex items-end justify-between mb-12">
           <div>
@@ -95,10 +95,9 @@ export default function Gallery() {
               key={i}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className={`relative overflow-hidden ${i === 0 ? 'lg:row-span-2' : ''}`}
+              className={`relative overflow-hidden ${i === 0 ? 'lg:row-span-2 min-h-[260px] lg:min-h-[420px]' : ''}`}
               style={{
                 aspectRatio: i === 0 ? 'auto' : '4/3',
-                minHeight: i === 0 ? '420px' : 'auto',
                 background: `linear-gradient(135deg, ${project.from}, ${project.to})`,
               }}
             >

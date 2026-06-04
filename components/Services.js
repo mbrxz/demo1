@@ -45,9 +45,9 @@ export default function Services() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <section id="services" className="bg-white py-20 border-t border-gray-100">
+    <section id="services" className="bg-white py-14 lg:py-20 border-t border-gray-100">
       <div className="container mx-auto px-6 lg:px-16">
-        <div className="flex items-end justify-between pb-10 border-b border-gray-100">
+        <div className="flex items-end justify-between pb-8 lg:pb-10 border-b border-gray-100">
           <div>
             <div className="w-16 h-0.5 bg-[#C17B54] mb-6" />
             <h2
@@ -68,32 +68,52 @@ export default function Services() {
               key={service.number}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className="flex items-center gap-6 lg:gap-12 py-6 border-b border-gray-100 group"
+              className="py-5 lg:py-6 border-b border-gray-100 group"
             >
-              <span className="text-[#1A1A1A]/20 font-bold text-xs uppercase tracking-widest w-8 shrink-0 group-hover:text-[#C17B54] transition-colors">
-                {service.number}
-              </span>
+              {/* Mobile layout: number + [title + desc + price] stacked */}
+              <div className="flex items-start gap-4 lg:hidden">
+                <span className="text-[#1A1A1A]/20 font-bold text-xs uppercase tracking-widest w-8 shrink-0 mt-1">
+                  {service.number}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-black text-lg uppercase text-[#1A1A1A] leading-tight">
+                      {service.title}
+                    </h3>
+                    <span className="text-[#6B6B6B] text-xs shrink-0 mt-0.5 font-medium tabular-nums">
+                      {service.price}
+                    </span>
+                  </div>
+                  <p className="text-sm text-[#6B6B6B] mt-2 leading-relaxed">{service.desc}</p>
+                </div>
+              </div>
 
-              <h3
-                className={`font-black text-xl lg:text-2xl uppercase flex-1 transition-colors duration-150 ${
-                  hovered === i ? 'text-[#C17B54]' : 'text-[#1A1A1A]'
-                }`}
-              >
-                {service.title}
-              </h3>
+              {/* Desktop layout: single row with hover desc */}
+              <div className="hidden lg:flex items-center gap-12">
+                <span className="text-[#1A1A1A]/20 font-bold text-xs uppercase tracking-widest w-8 shrink-0 group-hover:text-[#C17B54] transition-colors">
+                  {service.number}
+                </span>
 
-              <p
-                className={`text-sm text-[#6B6B6B] max-w-xs hidden lg:block transition-all duration-200 ${
-                  hovered === i ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
-                }`}
-              >
-                {service.desc}
-              </p>
+                <h3
+                  className={`font-black text-2xl uppercase flex-1 transition-colors duration-150 ${
+                    hovered === i ? 'text-[#C17B54]' : 'text-[#1A1A1A]'
+                  }`}
+                >
+                  {service.title}
+                </h3>
 
-              <span className="text-[#6B6B6B] text-sm shrink-0 hidden lg:block font-medium tabular-nums">
-                {service.price}
-              </span>
+                <p
+                  className={`text-sm text-[#6B6B6B] max-w-xs transition-all duration-200 ${
+                    hovered === i ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+                  }`}
+                >
+                  {service.desc}
+                </p>
 
+                <span className="text-[#6B6B6B] text-sm shrink-0 font-medium tabular-nums">
+                  {service.price}
+                </span>
+              </div>
             </div>
           ))}
         </div>

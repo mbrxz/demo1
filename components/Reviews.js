@@ -24,11 +24,11 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-[#FAFAF8] py-24 border-t border-gray-100">
+    <section id="reviews" className="bg-[#FAFAF8] py-16 lg:py-24 border-t border-gray-100">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 lg:mb-16 gap-4 lg:gap-6">
           <h2
             className="font-black text-[#1A1A1A] uppercase leading-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
@@ -42,7 +42,7 @@ export default function Reviews() {
           {reviews.map((review) => (
             <div
               key={review.name}
-              className="bg-white border border-[#E8E2DA] p-9 lg:p-10 hover:border-[#C17B54]/40 transition-colors duration-300"
+              className="bg-white border border-[#E8E2DA] p-7 lg:p-10 hover:border-[#C17B54]/40 transition-colors duration-300"
             >
               <div
                 className="font-black text-[#C17B54]/30 leading-none mb-6"

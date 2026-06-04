@@ -58,9 +58,9 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="bg-[#1A3C2E] py-24">
+    <section id="contact" className="bg-[#1A3C2E] py-16 lg:py-24">
       <div className="container mx-auto px-6 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
             <div className="w-16 h-0.5 bg-[#C17B54] mb-12" />
             <h2
